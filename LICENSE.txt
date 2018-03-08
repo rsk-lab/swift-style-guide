@@ -1,0 +1,11 @@
+Copyright Ⓒ 2018 R.SK Lab. All Rights Reserved.
+
+This guide was first modified on March 4, 2018
+
+Swift Style Guide is made available under a CC BY 4.0.
+To view a copy of this license, visit
+https://creativecommons.org/licenses/by/4.0/legalcode.
+
+Ⓒ LinkedIn Corporation 2016
+
+This guide was last updated for Swift 4.0 on February 14, 2018.
