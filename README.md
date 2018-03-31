@@ -342,7 +342,7 @@ internal final class UserViewController: UIViewController {
     // When working with a view controller, table view
     // controller, collection view controller, split view controller, etc.,
     // fully indicate the type in the name.
-    let popupTableViewController: UITableViewController
+    internal let popupTableViewController: UITableViewController
     
     // When working with outlets, make sure to specify the outlet type in the
     // property name.
