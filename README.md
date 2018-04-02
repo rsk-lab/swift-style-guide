@@ -1121,9 +1121,9 @@ Inside the type declaration:
 
 // MARK: - <#Accessibility#> Class API
 
-// MARK: - <#Accessibility#> Lifecycle
+// MARK: - Lifecycle
 
-// MARK: - <#Accessibility#> Actions
+// MARK: - Actions
 
 // MARK: - <#Accessibility#> API
 
