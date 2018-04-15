@@ -1129,15 +1129,15 @@ Inside the type declaration:
 
 // MARK: - <#Accessibility#> Class Properties
 
-// MARK: - <#Accessibility#> Static API
-
-// MARK: - <#Accessibility#> Class API
-
 // MARK: - Lifecycle
 
 // MARK: - Actions
 
 // MARK: - <#Accessibility#> API
+
+// MARK: - <#Accessibility#> Static API
+
+// MARK: - <#Accessibility#> Class API
 
 // MARK: - <#Name#>DataSource
 
