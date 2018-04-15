@@ -1141,9 +1141,7 @@ Inside the type declaration:
 
 // MARK: - <#Accessibility#> Class API
 
-// MARK: - <#Name#>DataSource
-
-// MARK: - <#Name#>Delegate
+// MARK: - <#Protocol#>
 ```
 
 After the type declaration:
@@ -1165,6 +1163,8 @@ fileprivate
 
 private
 ```
+
+Protocols should be placed in alphabetical order.
 
 ## 5. Documentation/Comments
 
