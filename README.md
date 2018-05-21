@@ -172,9 +172,11 @@ if firstValue > (secondValue + thirdValue)
 
 ```swift
 someFunctionWithManyArguments(
+    
     firstArgument: localProperty,
     secondArgument: resultFromSomeFunction(),
-    thirdArgument: someOtherLocalProperty)
+    thirdArgument: someOtherLocalProperty
+)
 ```
 
 * **1.14** When dealing with an implicit array or dictionary large enough to warrant splitting it into multiple lines, treat the `[` and `]` as if they were braces in a method, `if` statement, etc. Closures in a method should be treated similarly.
