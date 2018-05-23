@@ -183,6 +183,7 @@ someFunctionWithManyArguments(
 
 ```swift
 someFunctionWithABunchOfArguments(
+
     someStringArgument: "R.SK Lab",
     someArrayArgument: [
     
