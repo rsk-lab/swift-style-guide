@@ -39,9 +39,9 @@ This guide was last updated for Swift 4.0 on March 7, 2018.
 * **1.5** Do not place opening braces on new lines - we use the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup).
 
 ```swift
-internal final class SomeClass {
+final class SomeClass {
 
-    internal func someMethod() {
+    func someMethod() {
     
         if x == y {
         
@@ -91,7 +91,7 @@ let membersDictionary: [String: Any] = [
 ]
 
 // Declaring a function.
-internal func someFunction<T, U: SomeProtocol>(firstArgument: U, secondArgument: T) where T.RelatedType == U {
+func someFunction<T, U: SomeProtocol>(firstArgument: U, secondArgument: T) where T.RelatedType == U {
 
     /* ... */
 }
@@ -100,7 +100,7 @@ internal func someFunction<T, U: SomeProtocol>(firstArgument: U, secondArgument:
 someFunction(someArgument: "R.SK Lab")
 
 // Superclasses.
-internal final class MembersViewController: UIViewController {
+final class MembersViewController: UIViewController {
 
     /* ... */
 }
@@ -128,7 +128,7 @@ if 2 + 2 == 5 {
     fatalError("Is the Matrix broken?")
 }
 
-internal func code(with tea: Tea) -> Happiness {
+func code(with tea: Tea) -> Happiness {
 
     /* ... */
 }
@@ -138,7 +138,7 @@ internal func code(with tea: Tea) -> Happiness {
 
 ```swift
 // Xcode indentation for a function declaration that spans multiple lines
-internal func someFunctionWithManyParameters(parameterOne: String,
+func someFunctionWithManyParameters(parameterOne: String,
                                              parameterTwo: String,
                                              parameterThree: String) {
     
@@ -227,7 +227,7 @@ let htmlBodyContentString = "<p>R.SK Lab</p>"
 let profileID = 1
 
 // Prefer URLFinder to UrlFinder.
-internal final class URLFinder {
+final class URLFinder {
 
     /* ... */
 }
@@ -237,27 +237,27 @@ internal final class URLFinder {
 
 ```swift
 // PREFERRED    
-internal final class SomeClassName {
+final class SomeClassName {
 
     // MARK: - Constants
     
-    internal static let numberOfItemsInRow = 3
+    static let numberOfItemsInRow = 3
     
-    internal static let reuseIdentifier = "SomeClassNameReuseIdentifier"
+    static let reuseIdentifier = "SomeClassNameReuseIdentifier"
     
-    internal static let shared = SomeClassName()
+    static let shared = SomeClassName()
 }
 
 // NOT PREFERRED
-internal final class SomeClassName {
+final class SomeClassName {
 
     // Don't use `k`-prefix.
-    internal static let kReuseIdentifier = "SomeClassNameReuseIdentifier"
+    static let kReuseIdentifier = "SomeClassNameReuseIdentifier"
     
     // Don't namespace constants.
-    internal enum Constant {
+    enum Constant {
     
-        internal static let numberOfItemsInRow = 3
+        static let numberOfItemsInRow = 3
     }
 }
 ```
@@ -265,14 +265,14 @@ internal final class SomeClassName {
 * **2.6** For generics and associated types, use a `PascalCase` word that describes the generic. If this word clashes with a protocol that it conforms to or a superclass that it subclasses, you can append a `Type` suffix to the associated type or generic name.
 
 ```swift
-internal class SomeClass<Model> { /* ... */ }
+class SomeClass<Model> { /* ... */ }
 
-internal protocol Modelable {
+protocol Modelable {
 
     associatedtype Model
 }
 
-internal protocol Sequence {
+protocol Sequence {
 
     associatedtype IteratorType: Iterator
 }
@@ -282,21 +282,21 @@ internal protocol Sequence {
 
 ```swift
 // PREFERRED
-internal class RoundAnimatingButton: UIButton { /* ... */ }
+class RoundAnimatingButton: UIButton { /* ... */ }
 
 // NOT PREFERRED
-internal class CustomButton: UIButton { /* ... */ }
+class CustomButton: UIButton { /* ... */ }
 ```
 
 * **2.8** Do not abbreviate, use shortened names, or single letter names.
 
 ```swift
 // PREFERRED
-internal class RoundAnimatingButton: UIButton {
+class RoundAnimatingButton: UIButton {
 
-    internal let animationDuration: NSTimeInterval
+    let animationDuration: NSTimeInterval
 
-    internal func startAnimating() {
+    func startAnimating() {
     
         let firstSubview = subviews.first
     }
@@ -304,11 +304,11 @@ internal class RoundAnimatingButton: UIButton {
 }
 
 // NOT PREFERRED
-internal class RoundAnimating: UIButton {
+class RoundAnimating: UIButton {
 
-    internal let aniDur: NSTimeInterval
+    let aniDur: NSTimeInterval
 
-    internal func srtAnmating() {
+    func srtAnmating() {
     
         let v = subviews.first
     }
@@ -319,20 +319,20 @@ internal class RoundAnimating: UIButton {
 
 ```swift
 // PREFERRED
-internal final class UserViewController: UIViewController {
+final class UserViewController: UIViewController {
 
-    internal let showUserTeamAnimationDuration: TimeInterval
+    let showUserTeamAnimationDuration: TimeInterval
     
-    internal let userAvatarImageView: UIImageView
+    let userAvatarImageView: UIImageView
     
     // It is ok not to include string in the ivar name here because it's obvious
     // that it's a string from the property name.
-    internal let userFirstName: String
+    let userFirstName: String
     
     // When working with a view controller, table view
     // controller, collection view controller, split view controller, etc.,
     // fully indicate the type in the name.
-    internal let popupTableViewController: UITableViewController
+    let popupTableViewController: UITableViewController
     
     // When working with outlets, make sure to specify the outlet type in the
     // property name.
@@ -340,7 +340,7 @@ internal final class UserViewController: UIViewController {
 }
 
 // NOT PREFERRED
-internal final class UserViewController: UIViewController {
+final class UserViewController: UIViewController {
 
     // This isn't a `UIImage`, so shouldn't be called image
     // use `userAvatarImageView` instead.
@@ -381,10 +381,10 @@ internal final class UserViewController: UIViewController {
 
 ```swift
 // PREFERRED
-internal func remove(at index: Index) -> Element { /* ... */ }
+func remove(at index: Index) -> Element { /* ... */ }
 
 // NOT PREFERRED
-internal func remove(index: Index) -> Element { /* ... */ }
+func remove(index: Index) -> Element { /* ... */ }
 ```
 
 * **2.11** When naming function arguments, make sure that the function can be read easily to understand the purpose of each argument.
@@ -393,7 +393,7 @@ internal func remove(index: Index) -> Element { /* ... */ }
 
 ```swift
 // Here, the name is a noun that describes what the protocol does.
-internal protocol Unique {
+protocol Unique {
 
     var uuid: UUID { get }
     
@@ -401,7 +401,7 @@ internal protocol Unique {
 }
 
 // Here, the protocol is a capability, and we name it appropriately.
-internal protocol JSONEncodable {
+protocol JSONEncodable {
 
     func toJSONEncoded() -> [String: Any]
 
@@ -411,7 +411,7 @@ internal protocol JSONEncodable {
 // Suppose we have an `InputTextView` class, but we also want a protocol
 // to generalize some of the functionality - it might be appropriate to
 // use the `Protocol` suffix here.
-internal protocol InputTextViewProtocol {
+protocol InputTextViewProtocol {
 
     var inputText: String { get }
 
@@ -465,7 +465,7 @@ for integer in [4, 8, 15, 16, 23, 42] {
 * **3.1.4** If a function returns multiple values, prefer returning a tuple to using `inout` arguments (it’s best to use labeled tuples for clarity on what you’re returning if it is not otherwise obvious). If you use a certain tuple more than once, consider using a `typealias`. If you’re returning 3 or more items in a tuple, consider using a `struct` or `class` instead.
 
 ```swift
-internal var memberName: (firstName: String, lastName: String) {
+var memberName: (firstName: String, lastName: String) {
 
     return ("Ruslan", "Skorb")
 }
@@ -561,7 +561,7 @@ catch {
 
 ```swift
 // PREFERRED
-internal let someImageView: UIImageView
+let someImageView: UIImageView
 
 // NOT PREFERRED
 let someImageView: UIImageView
@@ -601,7 +601,7 @@ class Member {
 /// This property defines the company's name.
 /// - warning: Not `private` for `@testable`.
 ///
-internal let companyName = "R.SK Lab"
+let companyName = "R.SK Lab"
 ```
 
 * **3.2.5** Prefer `private` to `fileprivate` where possible.
@@ -642,7 +642,7 @@ case let .projectInquiries(email):
 * **3.4.5** If you have a default case that shouldn't be reached, preferably throw an error (or handle it in some other similar way such as asserting).
 
 ```swift
-internal func handleLevel(_ level: Int) throws {
+func handleLevel(_ level: Int) throws {
 
     switch digit {
 
@@ -681,13 +681,13 @@ if let _ = someOptional {
 
 ```swift
 // PREFERRED
-internal weak var window: UIWindow?
+weak var window: UIWindow?
 
 // NOT PREFERRED
-internal unowned var window: UIWindow
+unowned var window: UIWindow
 
 // NOT PREFERRED
-internal weak var window: UIWindow!
+weak var window: UIWindow!
 ```
 
 * **3.5.5** When unwrapping optionals, use the same name for the unwrapped constant or variable where appropriate.
@@ -713,7 +713,7 @@ Keep in mind that when using an extension, however, the methods in the extension
 * **3.7.1** If making a read-only, computed property, provide the getter without the `get {}` around it.
 
 ```swift
-internal var isHiddenMembersView: Bool {
+var isHiddenMembersView: Bool {
 
     if someBool == true {
 
@@ -727,7 +727,7 @@ internal var isHiddenMembersView: Bool {
 * **3.7.3** Though you can create a custom name for the new or old value for `willSet`/`didSet` and `set`, use the standard `newValue`/`oldValue` identifiers that are provided by default.
 
 ```swift
-internal var level = .senior {
+var level = .senior {
 
     willSet {
 
@@ -740,7 +740,7 @@ internal var level = .senior {
     }
 }
 
-internal var password: String? {
+var password: String? {
 
     get {
 
@@ -757,9 +757,9 @@ internal var password: String? {
 * **3.7.4** You can declare a singleton property as follows:
 
 ```swift
-internal final class PhotoLibrary {
+final class PhotoLibrary {
 
-    internal static let shared = PhotoLibrary()
+    static let shared = PhotoLibrary()
 
     /* ... */
 }
@@ -838,7 +838,7 @@ Suppose a function `someFunction` is supposed to return a `String`, however, at 
 Example:
 
 ```swift
-internal func readFile(named filename: String) -> String? {
+func readFile(named filename: String) -> String? {
 
     guard let file = openFile(named: filename) else {
 
@@ -851,7 +851,7 @@ internal func readFile(named filename: String) -> String? {
     return fileContents
 }
 
-internal func printSomeFile() {
+func printSomeFile() {
 
     let filename = "some_file.txt"
 
@@ -869,21 +869,21 @@ Instead, we should be using Swift's `try`/`catch` behavior when it is appropriat
 You can use a `struct` such as the following:
 
 ```swift
-internal struct InternalError: Error {
+struct InternalError: Error {
 
-    // MARK: - Internal Properties
+    // MARK: - Properties
 
-    internal let file: StaticString
+    let file: StaticString
 
-    internal let function: StaticString
+    let function: StaticString
 
-    internal let line: UInt
+    let line: UInt
 
-    internal let message: String
+    let message: String
 
     // MARK: - Lifecycle
 
-    internal init(message: String, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    init(message: String, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
 
         self.file = file
         self.function = function
@@ -896,7 +896,7 @@ internal struct InternalError: Error {
 Example usage:
 
 ```swift
-internal func readFile(named filename: String) throws -> String {
+func readFile(named filename: String) throws -> String {
 
     guard let file = openFile(named: filename) else {
 
@@ -909,7 +909,7 @@ internal func readFile(named filename: String) throws -> String {
     return fileContents
 }
 
-internal func printSomeFile() {
+func printSomeFile() {
 
     do {
 
@@ -929,7 +929,7 @@ internal func printSomeFile() {
 
 ```swift
 // PREFERRED
-internal func user(at index: Int) -> User? {
+func user(at index: Int) -> User? {
 
     guard index >= 0 && index < self.users.count else {
 
@@ -942,7 +942,7 @@ internal func user(at index: Int) -> User? {
 }
 
 // NOT PREFERRED
-internal func user(at index: Int) -> User? {
+func user(at index: Int) -> User? {
 
     if index >= 0 && index < self.users.count {
 
@@ -1169,7 +1169,7 @@ Guidelines:
 * **5.1.3** Use the new `- parameter` syntax as opposed to the old `:param:` syntax (make sure to use lower case `parameter` and not `Parameter`). Option-click on a method you wrote to make sure the quick help looks correct.
 
 ```swift
-internal final class User {
+final class User {
 
     ///
     /// This method feeds a certain food to a person.
@@ -1178,7 +1178,7 @@ internal final class User {
     /// - parameter team: The team to which the user, probably, belongs.
     /// - returns: `true` if the user is a member of the team; `false` otherwise.
     ///
-    internal func isMember(_ user: User, of team: Team) -> Bool {
+    func isMember(_ user: User, of team: Team) -> Bool {
 
         // ...
     }
@@ -1215,7 +1215,7 @@ internal final class User {
 /// 2. Thing two
 /// 3. Thing three
 ///
-internal final class SomeAwesomeClass {
+final class SomeAwesomeClass {
 
     /* ... */
 }
@@ -1228,7 +1228,7 @@ internal final class SomeAwesomeClass {
 /// This does something with a `UIViewController`, perchance.
 /// - warning: Make sure that `someValue` is `true` before running this function.
 ///
-internal func someFunction() {
+func someFunction() {
 
     /* ... */
 }
@@ -1243,15 +1243,15 @@ internal func someFunction() {
 * **5.2.3** When using `// MARK: - Whatever`, leave a newline after the comment.
 
 ```swift
-internal final class User {
+final class User {
 
-    // MARK: - Internal Properties
+    // MARK: - Properties
 
-    internal let name: String
+    let name: String
 
     // MARK: - Lifecycle
 
-    internal init(name: String) {
+    init(name: String) {
 
         /* ... */
     }
