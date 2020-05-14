@@ -61,22 +61,9 @@ internal final class SomeClass {
 }
 ```
 
-* **1.6** Don’t use one-liners (except for protocols).
+* **1.6** Add one empty line between functions. Give breathing room between code blocks.
 
-```swift
-// PREFERRED
-guard let firstValue = firstValue else {
-
-    return
-}
-
-// NOT PREFERRED
-guard let firstValue = firstValue else { return }
-```
-
-* **1.7** Add one empty line between functions. Give breathing room between code blocks.
-
-* **1.8** Empty declarations should be written in empty braces `{}`. Make it clear that the declaration was meant to be empty and not just a missing `TODO`.
+* **1.7** Empty declarations should be written in empty braces `{}`. Make it clear that the declaration was meant to be empty and not just a missing `TODO`.
 
 ```swift
 // PREFERRED
@@ -90,7 +77,7 @@ extension Level: Equatable {
 }
 ```
 
-* **1.9** When writing a type for a property, constant, variable, a key for a dictionary, a function argument, a protocol conformance, or a superclass, don't add a space before the colon.
+* **1.8** When writing a type for a property, constant, variable, a key for a dictionary, a function argument, a protocol conformance, or a superclass, don't add a space before the colon.
 
 ```swift
 // Specifying type.
@@ -125,13 +112,13 @@ extension MembersViewController: UITableViewDataSource {
 }
 ```
 
-* **1.10** In general, there should be a space following a comma.
+* **1.9** In general, there should be a space following a comma.
 
 ```swift
 let membersArray = ["Ruslan Skorb", /* ... */]
 ```
 
-* **1.11** There should be a space before and after a binary operator such as `+`, `==`, or `->`. There should also not be a space after a `(` and before a `)`.
+* **1.10** There should be a space before and after a binary operator such as `+`, `==`, or `->`. There should also not be a space after a `(` and before a `)`.
 
 ```swift
 let result = 10 + (18 / 3) * 5
@@ -147,7 +134,7 @@ internal func code(with tea: Tea) -> Happiness {
 }
 ```
 
-* **1.12** We follow Xcode's recommended indentation style (i.e. your code should not change if CTRL-I is pressed). When declaring a function that spans multiple lines, prefer using that syntax to which Xcode, as of version 9.2, defaults.
+* **1.11** We follow Xcode's recommended indentation style (i.e. your code should not change if CTRL-I is pressed). When declaring a function that spans multiple lines, prefer using that syntax to which Xcode, as of version 9.2, defaults.
 
 ```swift
 // Xcode indentation for a function declaration that spans multiple lines
@@ -168,7 +155,7 @@ if firstValue > (secondValue + thirdValue)
 }
 ```
 
-* **1.13** When calling a function that has many parameters, put each argument on a separate line with a single extra indentation.
+* **1.12** When calling a function that has many parameters, put each argument on a separate line with a single extra indentation.
 
 ```swift
 someFunctionWithManyArguments(
@@ -179,7 +166,7 @@ someFunctionWithManyArguments(
 )
 ```
 
-* **1.14** When dealing with an implicit array or dictionary large enough to warrant splitting it into multiple lines, treat the `[` and `]` as if they were braces in a method, `if` statement, etc. Closures in a method should be treated similarly.
+* **1.13** When dealing with an implicit array or dictionary large enough to warrant splitting it into multiple lines, treat the `[` and `]` as if they were braces in a method, `if` statement, etc. Closures in a method should be treated similarly.
 
 ```swift
 someFunctionWithABunchOfArguments(
@@ -201,7 +188,7 @@ someFunctionWithABunchOfArguments(
     })
 ```
 
-* **1.15** Prefer using local constants or other mitigation techniques to avoid multi-line predicates where possible.
+* **1.14** Prefer using local constants or other mitigation techniques to avoid multi-line predicates where possible.
 
 ```swift
 // PREFERRED
