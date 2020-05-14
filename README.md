@@ -622,24 +622,18 @@ You can override existing operators to support new types (especially `==`). Howe
 
 * **3.4.2** The `case` statements should line up with the `switch` statement itself as per default Swift stan2dards.
 
-* **3.4.3** When defining a case that has an associated value, make sure that this value is appropriately labeled as opposed to just types (e.g. `case resetPassword(email: String)` instead of `case resetPassword(String)`).
+* **3.4.3** When defining a case that has an associated value, make sure that this value is appropriately labeled as opposed to just types (e.g. `case projectInquiries(email: String)` instead of `case projectInquiries(String)`).
 
 ```swift
-internal enum API {
+enum ContactOption {
 
-    case resetPassword(email: String)
+    case projectInquiries(email: String)
 }
 
-internal var parameters: [String: Any]? {
+switch contactOption {
 
-    switch self {
-
-    case .resetPassword(let email):
-        return [
-
-            "email": email
-        ]
-    }
+case let .projectInquiries(email):
+    self.presentMailComposeViewController(withEmail: email)
 }
 ```
 
