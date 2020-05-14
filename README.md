@@ -1117,13 +1117,13 @@ Inside the type declaration:
 
 // MARK: - Actions
 
-// MARK: - <#Accessibility#> Superclass API
+// MARK: - <#Accessibility#> Superclass Functions
 
-// MARK: - <#Accessibility#> API
+// MARK: - <#Accessibility#> Functions
 
-// MARK: - <#Accessibility#> Static API
+// MARK: - <#Accessibility#> Static Functions
 
-// MARK: - <#Accessibility#> Class API
+// MARK: - <#Accessibility#> Class Functions
 
 // MARK: - <#Protocol#>
 ```
