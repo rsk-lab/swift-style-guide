@@ -135,14 +135,14 @@ let colorRed = topColorRed + percent * (bottomColorRed - topColorRed)
 * **2.4** When dealing with an acronym or other name that is usually written in all caps, actually use all caps in any names that use this in code. The exception is if this word is at the start of a name that needs to start with lowercase - in this case, use all lowercase for the acronym.
 
 ```swift
-// "HTML" is at the start of a constant name, so we use lowercase "html".
-let htmlBodyContentString = "<p>R.SK Lab</p>"
+// "URL" is at the start of a constant name, so we use lowercase "url".
+let urlSession = URLSession(configuration: .default)
 
 // Prefer using ID to Id.
-let profileID = 1
+let userID = 1
 
-// Prefer URLFinder to UrlFinder.
-final class URLFinder {
+// Prefer RSKLab to RskLab.
+final class RSKLab {
 
     /* ... */
 }
