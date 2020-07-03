@@ -128,7 +128,7 @@ let colorRed = topColorRed + percent * (bottomColorRed - topColorRed)
 
 * **2.1** There is no need for Objective-C style prefixing in Swift (e.g. use just `AppDelegate` instead of `RSKAppDelegate`).
 
-* **2.2** Use `PascalCase` for type names (e.g. `struct`, `enum`, `class`, `typedef`, `associatedtype`, etc.).
+* **2.2** Use `PascalCase` for type names (e.g. `struct`, `enum`, `class`, `typealias`, `associatedtype`, etc.).
 
 * **2.3** Use `camelCase` (initial lowercase letter) for function, method, property, constant, variable, argument names, enum cases, etc.
 
