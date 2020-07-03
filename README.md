@@ -81,12 +81,12 @@ extension Level: Equatable {
 
 ```swift
 // Specifying type.
-let membersViewController: MembersViewController
+let communityViewController: CommunityViewController
 
 // Dictionary syntax (note that we left-align as opposed to aligning colons).
-let membersDictionary: [String: Any] = [
+let communityMembersDictionary: [String: Any] = [
 
-    "CTO": "Ruslan Skorb",
+    "Founder": "Ruslan Skorb",
     /* ... */
 ]
 
@@ -100,13 +100,13 @@ func someFunction<T, U: SomeProtocol>(firstArgument: U, secondArgument: T) where
 someFunction(someArgument: "R.SK Lab")
 
 // Superclasses.
-final class MembersViewController: UIViewController {
+final class CommunityViewController: UIViewController {
 
     /* ... */
 }
 
 // Protocols.
-extension MembersViewController: UITableViewDataSource {
+extension CommunityViewController: UICollectionViewDataSource {
 
     /* ... */
 }
@@ -115,23 +115,13 @@ extension MembersViewController: UITableViewDataSource {
 * **1.9** In general, there should be a space following a comma.
 
 ```swift
-let membersArray = ["Ruslan Skorb", /* ... */]
+let communityMembersArray = ["Ruslan Skorb", /* ... */]
 ```
 
 * **1.10** There should be a space before and after a binary operator such as `+`, `==`, or `->`. There should also not be a space after a `(` and before a `)`.
 
 ```swift
-let result = 10 + (18 / 3) * 5
-
-if 2 + 2 == 5 {
-
-    fatalError("Is the Matrix broken?")
-}
-
-func code(with tea: Tea) -> Happiness {
-
-    /* ... */
-}
+let colorRed = topColorRed + percent * (bottomColorRed - topColorRed)
 ```
 
 * **1.11** We follow Xcode's recommended indentation style (i.e. your code should not change if CTRL-I is pressed). When declaring a function that spans multiple lines, prefer using that syntax to which Xcode, as of version 9.2, defaults.
