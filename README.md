@@ -126,13 +126,11 @@ let colorRed = topColorRed + percent * (bottomColorRed - topColorRed)
 
 ## 2. Naming
 
-* **2.1** There is no need for Objective-C style prefixing in Swift (e.g. use just `AppDelegate` instead of `RSKAppDelegate`).
+* **2.1** Use `PascalCase` for type names (e.g. `struct`, `enum`, `class`, `typealias`, `associatedtype`, etc.).
 
-* **2.2** Use `PascalCase` for type names (e.g. `struct`, `enum`, `class`, `typealias`, `associatedtype`, etc.).
+* **2.2** Use `camelCase` (initial lowercase letter) for function, method, property, constant, variable, argument names, enum cases, etc.
 
-* **2.3** Use `camelCase` (initial lowercase letter) for function, method, property, constant, variable, argument names, enum cases, etc.
-
-* **2.4** When dealing with an acronym or other name that is usually written in all caps, actually use all caps in any names that use this in code. The exception is if this word is at the start of a name that needs to start with lowercase - in this case, use all lowercase for the acronym.
+* **2.3** When dealing with an acronym or other name that is usually written in all caps, actually use all caps in any names that use this in code. The exception is if this word is at the start of a name that needs to start with lowercase - in this case, use all lowercase for the acronym.
 
 ```swift
 // "URL" is at the start of a constant name, so we use lowercase "url".
@@ -148,52 +146,7 @@ final class RSKLab {
 }
 ```
 
-* **2.5** All constants that are instance-independent should be `static`. All such `static` constants should be placed in a marked section of their `class`, `struct`, or `enum`. For classes with many constants, you should group constants that have similar or the same prefixes, suffixes and/or use cases.
-
-```swift
-// PREFERRED    
-final class SomeClassName {
-
-    // MARK: - Constants
-    
-    static let numberOfItemsInRow = 3
-    
-    static let reuseIdentifier = "SomeClassNameReuseIdentifier"
-    
-    static let shared = SomeClassName()
-}
-
-// NOT PREFERRED
-final class SomeClassName {
-
-    // Don't use `k`-prefix.
-    static let kReuseIdentifier = "SomeClassNameReuseIdentifier"
-    
-    // Don't namespace constants.
-    enum Constant {
-    
-        static let numberOfItemsInRow = 3
-    }
-}
-```
-
-* **2.6** For generics and associated types, use a `PascalCase` word that describes the generic. If this word clashes with a protocol that it conforms to or a superclass that it subclasses, you can append a `Type` suffix to the associated type or generic name.
-
-```swift
-class SomeClass<Model> { /* ... */ }
-
-protocol Modelable {
-
-    associatedtype Model
-}
-
-protocol Sequence {
-
-    associatedtype IteratorType: Iterator
-}
-```
-
-* **2.7** Names should be descriptive and unambiguous.
+* **2.4** Names should be descriptive and unambiguous.
 
 ```swift
 // PREFERRED
@@ -203,7 +156,7 @@ class RoundAnimatingButton: UIButton { /* ... */ }
 class CustomButton: UIButton { /* ... */ }
 ```
 
-* **2.8** Do not abbreviate, use shortened names, or single letter names.
+* **2.5** Do not abbreviate, use shortened names, or single letter names.
 
 ```swift
 // PREFERRED
@@ -230,7 +183,7 @@ class RoundAnimating: UIButton {
 }
 ```
 
-* **2.9** Include type information in constant or variable names when it is not obvious otherwise.
+* **2.6** Include type information in constant or variable names when it is not obvious otherwise.
 
 ```swift
 // PREFERRED
@@ -292,7 +245,7 @@ final class UserViewController: UIViewController {
     @IBOutlet weak var firstName: UILabel!
 }
 ```
-* **2.10** Name your function with words that describe its behavior.
+* **2.7** Name your function with words that describe its behavior.
 
 ```swift
 // PREFERRED
@@ -302,9 +255,7 @@ func remove(at index: Index) -> Element { /* ... */ }
 func remove(index: Index) -> Element { /* ... */ }
 ```
 
-* **2.11** When naming function arguments, make sure that the function can be read easily to understand the purpose of each argument.
-
-* **2.12** As per [Apple's API Design Guidelines](https://swift.org/documentation/api-design-guidelines/), a `protocol` should be named as nouns if they describe what something is doing (e.g. `Collection`) and using the suffixes `able`, `ible`, or `ing` if it describes a capability (e.g. `Equatable`, `ProgressReporting`). If neither of those options makes sense for your use case, you can add a `Protocol` suffix to the protocol's name as well. Some example `protocol`s are below.
+* **2.8** As per [Apple's API Design Guidelines](https://swift.org/documentation/api-design-guidelines/), a `protocol` should be named as nouns if they describe what something is doing (e.g. `Collection`) and using the suffixes `able`, `ible`, or `ing` if it describes a capability (e.g. `Equatable`, `ProgressReporting`). If neither of those options makes sense for your use case, you can add a `Protocol` suffix to the protocol's name as well. Some example `protocol`s are below.
 
 ```swift
 // Here, the name is a noun that describes what the protocol does.
