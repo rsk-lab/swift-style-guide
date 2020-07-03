@@ -34,7 +34,7 @@ This guide was last updated for Swift 4.0 on March 7, 2018.
 
 * **1.1** Use 4 spaces for tabs.
 * **1.2** Ensure that there is a newline at the end of every file.
-* **1.3** Ensure that there is no trailing whitespace (Xcode->Preferences->Text Editing->Automatically trim trailing whitespace).
+* **1.3** Ensure that there is no trailing whitespace (Xcode->Preferences->Text Editing->Editing->Automatically trim trailing whitespace).
 * **1.4** The opening brace should be followed by an empty line. Give breathing room when scanning for code.
 * **1.5** Do not place opening braces on new lines - we use the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup).
 
