@@ -1115,7 +1115,7 @@ Inside the type declaration:
 
 // MARK: - Lifecycle
 
-// MARK: - Actions
+// MARK: - Handling actions
 
 // MARK: - <#Accessibility#> Superclass Functions
 
