@@ -400,31 +400,39 @@ if (x == y) {
 
 ```swift
 // PREFERRED
-imageView.setImageWithURL(url, type: .person)
+let cancelAlertAction = UIAlertAction(title: cancelAlertActionTitle, style: .cancel, handler: nil)
 
 // NOT PREFERRED
-imageView.setImageWithURL(url, type: AsyncImageView.Type.person)
+let cancelAlertAction = UIAlertAction(title: cancelAlertActionTitle, style: UIAlertAction.Style.cancel, handler: nil)
 ```
 
 * **3.1.10** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
 
 ```swift
-if someBoolean {
-
-    // do something
+if managedObjectContext.hasChanges == true {
+    
+    /* ... */
 }
 else {
-
-    // do something else
+    
+    /* ... */
 }
 
+let data: Data?
 do {
-
-    let fileContents = try readFile("filename.txt")
+    
+    if let appStoreReceiptURL = bundle.appStoreReceiptURL {
+        
+        data = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+    }
+    else {
+        
+        data = nil
+    }
 }
 catch {
-
-    print(error)
+    
+    /* ... */
 }
 ```
 
