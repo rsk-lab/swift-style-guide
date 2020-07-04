@@ -270,17 +270,21 @@ func remove(index: Index) -> Element {
 ```swift
 // Here, the name is a noun that describes what the protocol does.
 protocol Unique {
-
+    
+    // MARK: - Properties
+    
     var uuid: UUID { get }
     
     /* ... */
 }
 
 // Here, the protocol is a capability, and we name it appropriately.
-protocol JSONEncodable {
-
-    func toJSONEncoded() -> [String: Any]
-
+protocol Reusable {
+    
+    // MARK: - Static Properties
+    
+    static var reuseIdentifier: String { get }
+    
     /* ... */
 }
 
@@ -288,9 +292,11 @@ protocol JSONEncodable {
 // to generalize some of the functionality - it might be appropriate to
 // use the `Protocol` suffix here.
 protocol InputTextViewProtocol {
-
+    
+    // MARK: - Properties
+    
     var inputText: String { get }
-
+    
     /* ... */
 }
 ```
