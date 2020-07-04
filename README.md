@@ -194,72 +194,75 @@ class CustomButton: UIButton {
 
 ```swift
 // PREFERRED
-final class UserViewController: UIViewController {
+final class NotesViewController: UIViewController {
 
-    let showUserTeamAnimationDuration: TimeInterval
+    // MARK: - Private Bar Button Items
     
-    let userAvatarImageView: UIImageView
+    private let createNoteBarButtonItem: UIBarButtonItem
+    
+    // MARK: - Private View Controllers
+    
+    // When working with a view controller, table view controller,
+    // collection view controller, split view controller, etc.,
+    // fully indicate the type in the name.
+    private let notesTableViewController: NotesViewNotesTableViewController
+}
+
+// PREFERRED
+final class NotesViewNotesTableViewDataController {
+    
+    // MARK: - Properties
     
     // It is ok not to include string in the ivar name here because it's obvious
     // that it's a string from the property name.
-    let userFirstName: String
-    
-    // When working with a view controller, table view
-    // controller, collection view controller, split view controller, etc.,
-    // fully indicate the type in the name.
-    let popupTableViewController: UITableViewController
-    
-    // When working with outlets, make sure to specify the outlet type in the
-    // property name.
-    @IBOutlet weak var submitButton: UIButton!
+    var normalizedTitleSearchTerm: String? {
+        
+        /* ... */
+    }
 }
 
 // NOT PREFERRED
-final class UserViewController: UIViewController {
-
-    // This isn't a `UIImage`, so shouldn't be called image
-    // use `userAvatarImageView` instead.
-    let userAvatarImage: UIImageView
-
-    // This isn't a `String`, so it should be `textLabel`.
-    let text: UILabel
-
-    // `animation` is not clearly a time interval
-    // use `animationDuration` or `animationTimeInterval` instead.
-    let animation: TimeInterval
-
-    // This is not obviously a `String`
-    // use `transitionText` or `transitionString` instead.
-    let transition: String
-
-    // This is a view controller - not a view.
-    let popupView: UIViewController
-
-    // As mentioned previously, we don't want to use abbreviations, so don't use
-    // `VC` instead of `ViewController`.
-    let popupVC: UIViewController
-
-    // Even though this is still technically a `UIViewController`, this property
-    // should indicate that we are working with a *Table* View Controller.
-    let popupViewController: UITableViewController
-
+final class NotesViewController: UIViewController {
+    
+    // MARK: - Private Bar Button Items
+    
+    // This isn't a `UIButton`, so shouldn't be called button
+    // use `createNoteBarButtonItem` instead.
+    let createNoteButton: UIBarButtonItem
+    
     // For the sake of consistency, we should put the type name at the end of the
     // property name and not at the start.
-    @IBOutlet weak var buttonSubmit: UIButton!
+    private let barButtonItemNotes: UIBarButtonItem
+    
+    // MARK: - Private Views
 
-    // We should always have a type in the property name when dealing with outlets
-    // for example, here, we should have `firstNameLabel` instead.
-    @IBOutlet weak var firstName: UILabel!
+    // This isn't a `String`, so it should be `startLoggingLabel`.
+    private let startLogging: Label
+    
+    // MARK: - Private View Controllers
+    
+    // This is a table view controller - not a table view.
+    private let notesTableView: NotesViewNotesTableViewController
+    
+    // As mentioned previously, we don't want to use abbreviations, so don't use
+    // `VC` instead of `ViewController`.
+    private let notesTableVC: NotesViewNotesTableVC
 }
 ```
 * **2.7** Name your function with words that describe its behavior.
 
 ```swift
 // PREFERRED
-func remove(at index: Index) -> Element { /* ... */ }
+func remove(at index: Index) -> Element {
+    
+    /* ... */
+}
 
 // NOT PREFERRED
-func remove(index: Index) -> Element { /* ... */ }
+func remove(index: Index) -> Element {
+    
+    /* ... */
+}
 ```
 
 * **2.8** As per [Apple's API Design Guidelines](https://swift.org/documentation/api-design-guidelines/), a `protocol` should be named as nouns if they describe what something is doing (e.g. `Collection`) and using the suffixes `able`, `ible`, or `ing` if it describes a capability (e.g. `Equatable`, `ProgressReporting`). If neither of those options makes sense for your use case, you can add a `Protocol` suffix to the protocol's name as well. Some example `protocol`s are below.
