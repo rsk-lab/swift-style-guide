@@ -40,8 +40,10 @@ This guide was last updated for Swift 4.0 on March 7, 2018.
 
 ```swift
 final class SomeClass {
-
-    func someMethod() {
+    
+    // MARK: - Functions
+    
+    func someFunction() {
     
         if x == y {
         
@@ -150,35 +152,40 @@ final class RSKLab {
 
 ```swift
 // PREFERRED
-class RoundAnimatingButton: UIButton { /* ... */ }
+class IBDesignableButton: UIButton {
+    
+    /* ... */
+}
 
 // NOT PREFERRED
-class CustomButton: UIButton { /* ... */ }
+class CustomButton: UIButton {
+    
+    /* ... */
+}
 ```
 
 * **2.5** Do not abbreviate, use shortened names, or single letter names.
 
 ```swift
 // PREFERRED
-class RoundAnimatingButton: UIButton {
-
-    let animationDuration: NSTimeInterval
-
-    func startAnimating() {
+@IBDesignable open class IBDesignableButton: UIButton {
     
-        let firstSubview = subviews.first
+    // MARK: - Open Properties
+    
+    @IBInspectable open var cornerRadius: CGFloat {
+        
+        /* ... */
     }
-
 }
 
 // NOT PREFERRED
-class RoundAnimating: UIButton {
+@IBDesignable open class IBDesignBtn: UIButton {
 
-    let aniDur: NSTimeInterval
-
-    func srtAnmating() {
+    // MARK: - Open Properties
     
-        let v = subviews.first
+    @IBInspectable open var r: CGFloat {
+        
+        /* ... */
     }
 }
 ```
