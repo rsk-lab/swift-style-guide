@@ -311,32 +311,32 @@ protocol InputTextViewProtocol {
 
 ```swift
 // PREFERRED
-let stringOfInts = [1, 2, 3].flatMap({
-
-    return String($0)
-})
+let strings = [1, 2, 3].flatMap {
+    
+    String($0)
+}
 // ["1", "2", "3"]
 
 // NOT PREFERRED
-var stringOfInts: [String] = []
+var strings: [String] = []
 for integer in [1, 2, 3] {
-
-    stringOfInts.append(String(integer))
+    
+    strings.append(String(integer))
 }
 
 // PREFERRED
-let evenNumbers = [4, 8, 15, 16, 23, 42].filter({
-
-    return $0 % 2 == 0
-})
+let evenNumbers = [4, 8, 15, 16, 23, 42].filter {
+    
+    $0 % 2 == 0
+}
 // [4, 8, 16, 42]
 
 // NOT PREFERRED
 var evenNumbers: [Int] = []
 for integer in [4, 8, 15, 16, 23, 42] {
-
+    
     if integer % 2 == 0 {
-
+    
         evenNumbers.append(integer)
     }
 }
@@ -347,14 +347,14 @@ for integer in [4, 8, 15, 16, 23, 42] {
 * **3.1.4** If a function returns multiple values, prefer returning a tuple to using `inout` arguments (it’s best to use labeled tuples for clarity on what you’re returning if it is not otherwise obvious). If you use a certain tuple more than once, consider using a `typealias`. If you’re returning 3 or more items in a tuple, consider using a `struct` or `class` instead.
 
 ```swift
-var memberName: (firstName: String, lastName: String) {
-
+var communityMemberName: (firstName: String, lastName: String) {
+    
     return ("Ruslan", "Skorb")
 }
 
-let memberName = self.memberName
-let firstName = memberName.firstName
-let lastName = memberName.lastName
+let communityMemberName = self.communityMemberName
+let firstName = communityMemberName.firstName
+let lastName = communityMemberName.lastName
 ```
 
 * **3.1.5** Be wary of retain cycles when creating delegates/protocols for your classes; typically, these properties should be declared `weak`.
@@ -365,18 +365,17 @@ let lastName = memberName.lastName
 
 ```swift
 someFunctionWithEscapingClosure() { [weak self] (error) in
-
+    
     // you can do this
-
+    
     self?.doSomething()
-
+    
     // or you can do this
-
+    
     guard let strongSelf = self else {
-
+        
         return
     }
-
     strongSelf.doSomething()
 }
 ```
