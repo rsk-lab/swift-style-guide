@@ -67,13 +67,13 @@ final class SomeClass {
 
 ```swift
 // PREFERRED
-extension Level: Equatable {}
+extension InAppNotification: Equatable {}
 
 // NOT PREFERRED
-extension Level: Equatable { }
+extension InAppNotification: Equatable { }
 
 // EVEN LESS PREFERRED
-extension Level: Equatable {
+extension InAppNotification: Equatable {
 }
 ```
 
