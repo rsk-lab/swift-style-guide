@@ -380,9 +380,7 @@ someFunctionWithEscapingClosure() { [weak self] (error) in
 }
 ```
 
-* **3.1.8** Don't use labeled breaks.
-
-* **3.1.9** Don't place parentheses around control flow predicates.
+* **3.1.8** Don't place parentheses around control flow predicates.
 
 ```swift
 // PREFERRED
@@ -398,7 +396,7 @@ if (x == y) {
 }
 ```
 
-* **3.1.10** Avoid writing out an `enum` type where possible - use shorthand.
+* **3.1.9** Avoid writing out an `enum` type where possible - use shorthand.
 
 ```swift
 // PREFERRED
@@ -408,9 +406,7 @@ imageView.setImageWithURL(url, type: .person)
 imageView.setImageWithURL(url, type: AsyncImageView.Type.person)
 ```
 
-* **3.1.11** When writing methods, keep in mind whether the method is intended to be overridden or not. If not, mark it as `final`, though keep in mind that this will prevent the method from being overwritten for testing purposes. In general, `final` methods result in improved compilation times, so it is good to use this when applicable. Be particularly careful, however, when applying the `final` keyword in a library since it is non-trivial to change something to be non-`final` in a library as opposed to have changing something to be non-`final` in your local project.
-
-* **3.1.12** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
+* **3.1.10** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
 
 ```swift
 if someBoolean {
@@ -432,9 +428,9 @@ catch {
 }
 ```
 
-* **3.1.13** Prefer `static` to `class` when declaring a function or property that is associated with a class as opposed to an instance of that class. Only use `class` if you specifically need the functionality of overriding that function or property in a subclass, though consider using a `protocol` to achieve this instead.
+* **3.1.11** Prefer `static` to `class` when declaring a function or property that is associated with a class as opposed to an instance of that class. Only use `class` if you specifically need the functionality of overriding that function or property in a subclass, though consider using a `protocol` to achieve this instead.
 
-* **3.1.14** If you have a function that takes no arguments, has no side effects, and returns some object or value, prefer using a computed property instead.
+* **3.1.12** If you have a function that takes no arguments, has no side effects, and returns some object or value, prefer using a computed property instead.
 
 ### 3.2 Access Modifiers
 
