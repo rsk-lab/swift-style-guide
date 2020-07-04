@@ -442,56 +442,32 @@ catch {
 
 ### 3.2 Access Modifiers
 
-* **3.2.1** Always specify access modifiers.
+* **3.2.1** Write the access modifier keyword first.
 
 ```swift
 // PREFERRED
-let someImageView: UIImageView
+private static let somePrivateInt: Int
 
 // NOT PREFERRED
-let someImageView: UIImageView
+static private let somePrivateInt: Int
 ```
 
-* **3.2.2** Write the access modifier keyword first.
+* **3.2.2** The access modifier keyword should not be on a line by itself - keep it inline with what it is describing.
 
 ```swift
 // PREFERRED
-private static let somePrivateNumber: Int
-
-// NOT PREFERRED
-static private let somePrivateNumber: Int
-```
-
-* **3.2.3** The access modifier keyword should not be on a line by itself - keep it inline with what it is describing.
-
-```swift
-// PREFERRED
-open class Member {
+open class CommunityMember {
 
     /* ... */
 }
 
 // NOT PREFERRED
 open
-class Member {
+class CommunityMember {
 
     /* ... */
 }
 ```
-
-* **3.2.4** If a property needs to be accessed by unit tests, you will have to make it `internal` to use `@testable import ModuleName`. If a property *should* be private, but you declare it to be `internal` for the purposes of unit testing, make sure you add an appropriate bit of documentation commenting that explains this. You can make use of the `- warning:` markup syntax for clarity as shown below.
-
-```swift
-///
-/// This property defines the company's name.
-/// - warning: Not `private` for `@testable`.
-///
-let companyName = "R.SK Lab"
-```
-
-* **3.2.5** Prefer `private` to `fileprivate` where possible.
-
-* **3.2.6** When choosing between `public` and `open`, prefer `open` if you intend for something to be subclassable outside of a given module and `public` otherwise. Note that anything `internal` and above can be subclassed in tests by using `@testable import`, so this shouldn't be a reason to use `open`. In general, lean towards being a bit more liberal with using `open` when it comes to libraries, but a bit more conservative when it comes to modules in a codebase such as an app where it is easy to change things in multiple modules simultaneously.
 
 ### 3.3 Custom Operators
 
