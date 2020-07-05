@@ -632,101 +632,9 @@ doSomethingWithClosure() { (urlResponse) in
 
 * **3.9.1** Prefer using a `for item in items` syntax when possible as opposed to something like `for i in 0 ..< items.count`. If you need to access an array subscript directly, make sure to do proper bounds checking. You can use `for (index, value) in items.enumerated()` to get both the index and the value.
 
-### 3.10 Error Handling
+### 3.10 Using `guard` Statements
 
-Suppose a function `someFunction` is supposed to return a `String`, however, at some point it can run into an error. A common approach is to have this function return an optional `String?` where we return `nil` if something went wrong.
-
-Example:
-
-```swift
-func readFile(named filename: String) -> String? {
-
-    guard let file = openFile(named: filename) else {
-
-        return nil
-    }
-
-    let fileContents = file.read()
-    file.close()
-
-    return fileContents
-}
-
-func printSomeFile() {
-
-    let filename = "some_file.txt"
-
-    guard let fileContents = readFile(named: filename) else {
-
-        print("Unable to open file \(filename).")
-        return
-    }
-    print(fileContents)
-}
-```
-
-Instead, we should be using Swift's `try`/`catch` behavior when it is appropriate to know the reason for the failure.
-
-You can use a `struct` such as the following:
-
-```swift
-struct InternalError: Error {
-
-    // MARK: - Properties
-
-    let file: StaticString
-
-    let function: StaticString
-
-    let line: UInt
-
-    let message: String
-
-    // MARK: - Lifecycle
-
-    init(message: String, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-
-        self.file = file
-        self.function = function
-        self.line = line
-        self.message = message
-    }
-}
-```
-
-Example usage:
-
-```swift
-func readFile(named filename: String) throws -> String {
-
-    guard let file = openFile(named: filename) else {
-
-        throw Error(message: "Unable to open file named \(filename).")
-    }
-
-    let fileContents = file.read()
-    file.close()
-
-    return fileContents
-}
-
-func printSomeFile() {
-
-    do {
-
-        let fileContents = try readFile(named: "some_file.txt")
-        print(fileContents)
-    }
-    catch {
-
-        print(error)
-    }
-}
-```
-
-### 3.11 Using `guard` Statements
-
-* **3.11.1** In general, we prefer to use an "early return" strategy where applicable as opposed to nesting code in `if` statements. Using `guard` statements for this use-case is often helpful and can improve the readability of the code.
+* **3.10.1** In general, we prefer to use an "early return" strategy where applicable as opposed to nesting code in `if` statements. Using `guard` statements for this use-case is often helpful and can improve the readability of the code.
 
 ```swift
 // PREFERRED
@@ -754,7 +662,7 @@ func user(at index: Int) -> User? {
 }
 ```
 
-* **3.11.2** When unwrapping optionals, prefer `guard` statements as opposed to `if` statements to decrease the amount of nested indentation in your code.
+* **3.10.2** When unwrapping optionals, prefer `guard` statements as opposed to `if` statements to decrease the amount of nested indentation in your code.
 
 ```swift
 // PREFERRED
@@ -778,7 +686,7 @@ if self.viewModel == nil {
 self.imageView.image = self.viewModel!.imageViewImage
 ```
 
-* **3.11.3** When deciding between using an `if` statement or a `guard` statement when unwrapping optionals is *not* involved, the most important thing to keep in mind is the readability of the code. There are many possible cases here, such as depending on two different booleans, a complicated logical statement involving multiple comparisons, etc., so in general, use your best judgement to write code that is readable and consistent. If you are unsure whether `guard` or `if` is more readable or they seem equally readable, prefer using `guard`.
+* **3.10.3** When deciding between using an `if` statement or a `guard` statement when unwrapping optionals is *not* involved, the most important thing to keep in mind is the readability of the code. There are many possible cases here, such as depending on two different booleans, a complicated logical statement involving multiple comparisons, etc., so in general, use your best judgement to write code that is readable and consistent. If you are unsure whether `guard` or `if` is more readable or they seem equally readable, prefer using `guard`.
 
 ```swift
 // An `if` statement is readable here.
@@ -800,7 +708,7 @@ guard isOperationFailed != false else {
 }
 ```
 
-* **3.11.4** If choosing between two different states, it makes more sense to use an `if` statement as opposed to a `guard` statement.
+* **3.10.4** If choosing between two different states, it makes more sense to use an `if` statement as opposed to a `guard` statement.
 
 ```swift
 // PREFERRED
@@ -823,7 +731,7 @@ guard isMemberUser == true else {
 print("Glad to see you again, \(user.firstName)")
 ```
 
-* **3.11.5** You should also use `guard` only if a failure should result in exiting the current context. Below is an example in which it makes more sense to use two `if` statements instead of using two `guard`s - we have two unrelated conditions that should not block one another.
+* **3.10.5** You should also use `guard` only if a failure should result in exiting the current context. Below is an example in which it makes more sense to use two `if` statements instead of using two `guard`s - we have two unrelated conditions that should not block one another.
 
 ```swift
 if let firstValue = firstValue {
@@ -837,7 +745,7 @@ if let secondValue = secondValue, secondValue > 10 {
 }
 ```
 
-* **3.11.6** Often, we can run into a situation in which we need to unwrap multiple optionals using `guard` statements. In general, combine unwraps into a single `guard` statement if handling the failure of each unwrap is identical (e.g. just a `return`, `break`, `continue`, `throw`, or some other `@noescape`).
+* **3.10.6** Often, we can run into a situation in which we need to unwrap multiple optionals using `guard` statements. In general, combine unwraps into a single `guard` statement if handling the failure of each unwrap is identical (e.g. just a `return`, `break`, `continue`, `throw`, or some other `@noescape`).
 
 ```swift
 // Combined because we just return.
