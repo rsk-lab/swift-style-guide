@@ -553,13 +553,14 @@ When implementing protocols, there are three ways to organize your code:
 * **3.7.1** If making a read-only, computed property, provide the getter without the `get {}` around it.
 
 ```swift
-var isHiddenMembersView: Bool {
+var isHiddenKeyboard: Bool {
 
-    if someBool == true {
-
+    guard let keyboardFrame = self.keyboardFrame else {
+        
         return true
     }
-    return false
+    let isHiddenKeyboard = keyboardFrame.intersects(self.view.frame) == false
+    return isHiddenKeyboard
 }
 ```
 
@@ -567,29 +568,27 @@ var isHiddenMembersView: Bool {
 * **3.7.3** Though you can create a custom name for the new or old value for `willSet`/`didSet` and `set`, use the standard `newValue`/`oldValue` identifiers that are provided by default.
 
 ```swift
-var level = .senior {
-
-    willSet {
-
-        print("will set to \(newValue)")
-    }
-
+private(set) var selectedViewController: UIViewController? {
+    
     didSet {
-
-        print("did set from \(oldValue) to \(self.level)")
+        
+        oldValue?.willMove(toParent: nil)
+        oldValue?.view.removeFromSuperview()
+        oldValue?.removeFromParent()
+        
+        /* ... */
     }
 }
 
-var password: String? {
-
+var noteText: String? {
+    
     get {
-
-        return self.passwordTextField.text
+        
+        self.noteTextController.noteText
     }
-
     set {
-
-        self.passwordTextField.text = password
+        
+        self.noteTextController.noteText = newValue
     }
 }
 ```
@@ -597,10 +596,14 @@ var password: String? {
 * **3.7.4** You can declare a singleton property as follows:
 
 ```swift
-final class PhotoLibrary {
-
-    static let shared = PhotoLibrary()
-
+final class ApplicationDataController {
+    
+    /* ... */
+    
+    // MARK: - Static Properties
+    
+    static let shared = ApplicationDataController()
+    
     /* ... */
 }
 ```
