@@ -481,7 +481,7 @@ You can override existing operators to support new types (especially `==`). Howe
 
 * **3.4.1** Since `switch` cases in Swift break by default, do not include the `break` keyword if it is not needed.
 
-* **3.4.2** The `case` statements should line up with the `switch` statement itself as per default Swift stan2dards.
+* **3.4.2** The `case` statements should line up with the `switch` statement itself as per default Swift standards.
 
 * **3.4.3** When defining a case that has an associated value, make sure that this value is appropriately labeled as opposed to just types (e.g. `case projectInquiries(email: String)` instead of `case projectInquiries(String)`).
 
