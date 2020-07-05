@@ -488,13 +488,13 @@ You can override existing operators to support new types (especially `==`). Howe
 ```swift
 enum ContactOption {
 
-    case projectInquiries(email: String)
+    case generalQuestions(email: String)
 }
 
 switch contactOption {
 
-case let .projectInquiries(email):
-    self.presentMailComposeViewController(withEmail: email)
+case let .generalQuestions(email):
+    self.presentMailComposeViewController(email: email)
 }
 ```
 
@@ -503,16 +503,22 @@ case let .projectInquiries(email):
 * **3.4.5** If you have a default case that shouldn't be reached, preferably throw an error (or handle it in some other similar way such as asserting).
 
 ```swift
-func handleLevel(_ level: Int) throws {
-
-    switch digit {
-
-    case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9:
-        print("Level: \(level)")
-
-    default:
-        throw Error(message: "The given level is invalid.")
-    }
+switch type {
+    
+case .delete:
+    /* ... */
+    
+case .insert:
+    /* ... */
+    
+case .move:
+    /* ... */
+    
+case .update:
+    /* ... */
+    
+@unknown default:
+    fatalError("controller(_:didChange:at:for:newIndexPath:) - unsupported type")
 }
 ```
 
