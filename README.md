@@ -628,24 +628,6 @@ doSomethingWithClosure() { (urlResponse) in
 
 * **3.8.2** Keep parameter names on same line as the opening brace for closures.
 
-* **3.8.3** Don't use trailing closure syntax because the meaning of the closure is not always obvious without the parameter name.
-
-```swift
-// PREFERRED
-updateUsername(username, onComplete: { (error) in
-
-    print(error)
-})
-
-// NOT PREFERRED
-updateUsername(username) { (error) in
-
-    // `onComplete` or `onFailure`?
-
-    print(error)
-}
-```
-
 ### 3.9 Arrays
 
 * **3.9.1** Prefer using a `for item in items` syntax when possible as opposed to something like `for i in 0 ..< items.count`. If you need to access an array subscript directly, make sure to do proper bounds checking. You can use `for (index, value) in items.enumerated()` to get both the index and the value.
