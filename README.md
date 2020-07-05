@@ -656,19 +656,9 @@ func communityMember(at index: Int) -> CommunityMember? {
 Import statements should be at the very top of the code file, and they should be listed in alphabetical order.
 
 ```swift
-import CoreStore
-import Foundation
-import Moya
-import RxSwift
+import CoreData.NSManagedObjectID
+import MessageUI.MFMailComposeViewController
 import UIKit
-```
-
-The exception is for imports that are for testing only; they should be placed at the bottom of the list, in alphabetical order.
-
-```swift
-import Moya
-import UIKit
-@testable import SomeLibrary
 ```
 
 ### 4.2 File Structure
