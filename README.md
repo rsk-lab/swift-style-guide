@@ -638,27 +638,14 @@ doSomethingWithClosure() { (urlResponse) in
 
 ```swift
 // PREFERRED
-func user(at index: Int) -> User? {
-
-    guard index >= 0 && index < self.users.count else {
-
+func communityMember(at index: Int) -> CommunityMember? {
+    
+    guard index >= 0 && index < self.communityMembers.count else {
+        
         // return early because the index is out of bounds
         return nil
     }
-
-    let user = self.users[index]
-    return user
-}
-
-// NOT PREFERRED
-func user(at index: Int) -> User? {
-
-    if index >= 0 && index < self.users.count {
-
-        let user = self.users[index]
-        return user
-    }
-    return nil
+    return self.communityMembers[index]
 }
 ```
 
