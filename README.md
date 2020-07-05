@@ -665,16 +665,6 @@ import UIKit
 
 The following list should be the standard organization of all your Swift files, in this specific order:
 
-Before the type declaration:
-
-```swift
-private class
-
-private struct
-
-private enum
-```
-
 Inside the type declaration:
 
 ```swift
