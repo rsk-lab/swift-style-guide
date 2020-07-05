@@ -614,43 +614,21 @@ final class ApplicationDataController {
 
 ```swift
 // Omitting the type.
-doSomethingWithClosure() { (response) in
-
-    print(response)
-}
-
-// Explicit type.
-doSomethingWithClosure() { (response: NSURLResponse) in
-
-    print(response)
+doSomethingWithClosure() { (urlResponse) in
+    
+    /* ... */
 }
 
 // Using shorthand in a map statement.
-[1, 2, 3].flatMap({
+[1, 2, 3].flatMap {
 
-    return String($0)
-})
+    String($0)
+}
 ```
 
-* **3.8.2** If specifying a closure as a type, wrap it in parentheses. Always wrap the arguments in the closure in a set of parentheses - use `()` to indicate no arguments and that nothing is returned.
+* **3.8.2** Keep parameter names on same line as the opening brace for closures.
 
-```swift
-let completionBlock: ((Bool) -> ()) = { (success) in
-
-    print("Success? \(success)")
-}
-
-let completionBlock: (() -> ()) = {
-
-    print("Completed!")
-}
-
-let completionBlock: (() -> ())? = nil
-```
-
-* **3.8.3** Keep parameter names on same line as the opening brace for closures.
-
-* **3.8.4** Don't use trailing closure syntax because the meaning of the closure is not always obvious without the parameter name.
+* **3.8.3** Don't use trailing closure syntax because the meaning of the closure is not always obvious without the parameter name.
 
 ```swift
 // PREFERRED
