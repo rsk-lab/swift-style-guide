@@ -542,12 +542,11 @@ if let _ = someOptional {
 
 ### 3.6 Protocols
 
-When implementing protocols, there are two ways of organizing your code:
+When implementing protocols, there are three ways to organize your code:
 
 1. Using `// MARK:` comments to separate your protocol implementation from the rest of your code.
 2. Using an extension outside your `class`/`struct` implementation code, but in the same source file.
-
-Keep in mind that when using an extension, however, the methods in the extension can't be overridden by a subclass, which can make testing difficult. If this is a common use case, it might be better to stick with method #1 for consistency. Otherwise, method #2 allows for cleaner separation of concerns.
+3. Using an extension outside your `class`/`struct` implementation code in another source file.
 
 ### 3.7 Properties
 
