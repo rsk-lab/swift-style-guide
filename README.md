@@ -649,7 +649,7 @@ func communityMember(at index: Int) -> CommunityMember? {
 }
 ```
 
-## 4. Dependencies/File Structure
+## 4. File Structure
 
 ### 4.1 Import Statements
 
