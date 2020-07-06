@@ -719,7 +719,7 @@ Protocols should be placed in alphabetical order.
 
 ### 5.1 Documentation
 
-If a function is more complicated than a simple O(1) operation, you should generally consider adding a doc comment for the function since there could be some information that the method signature does not make immediately obvious. If there are any quirks to the way that something was implemented, whether technically interesting, tricky, not obvious, etc., this should be documented. Documentation should be added for complex classes/structs/enums/protocols and properties. All `public` functions/classes/properties/constants/structs/enums/protocols/etc. should be documented as well (provided, again, that their signature/name does not make their meaning/functionality immediately obvious).
+All `public` functions/classes/properties/constants/structs/enums/protocols/etc. should be documented.
 
 After writing a doc comment, you should option click the function/property/class/etc. to make sure that everything is formatted correctly.
 
