@@ -141,7 +141,7 @@ let urlSession = URLSession(configuration: .default)
 let userID = 1
 
 // Prefer RSKLab to RskLab.
-final class RSKLab {
+final public class RSKLab {
 
     /* ... */
 }
