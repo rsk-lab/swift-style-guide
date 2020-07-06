@@ -642,7 +642,11 @@ The following list should be the standard organization of all your Swift files, 
 Inside the type declaration:
 
 ```swift
+// MARK: - <#Accessibility#> Bar Button Items
+
 // MARK: - <#Accessibility#> Views
+
+// MARK: - <#Accessibility#> View Controllers
 
 // MARK: - <#Accessibility#> Superclass Properties
 
