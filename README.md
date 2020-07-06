@@ -743,8 +743,7 @@ Guidelines:
 ### 5.2 Other Commenting Guidelines
 
 * **5.2.1** Always leave a space after `//`.
-* **5.2.2** Always leave comments on their own line.
-* **5.2.3** When using `// MARK: - Whatever`, leave a newline after the comment.
+* **5.2.2** When using `// MARK: - Whatever`, leave a newline after the comment.
 
 ```swift
 final class User {
