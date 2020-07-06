@@ -731,75 +731,14 @@ Guidelines:
 
 * **5.1.2** Add a new line before and after the doc comment that takes up more than one line.
 
-* **5.1.3** Use the new `- parameter` syntax as opposed to the old `:param:` syntax (make sure to use lower case `parameter` and not `Parameter`). Option-click on a method you wrote to make sure the quick help looks correct.
-
-```swift
-final class User {
-
-    ///
-    /// This method feeds a certain food to a person.
-    ///
-    /// - parameter user: The user you want to check.
-    /// - parameter team: The team to which the user, probably, belongs.
-    /// - returns: `true` if the user is a member of the team; `false` otherwise.
-    ///
-    func isMember(_ user: User, of team: Team) -> Bool {
-
-        // ...
-    }
-}
-```
-
-* **5.1.4** If you’re going to be documenting the parameters/returns/throws of a method, document all of them, even if some of the documentation ends up being somewhat repetitive (this is preferable to having the documentation look incomplete). Sometimes, if only a single parameter warrants documentation, it might be better to just mention it in the description instead.
-
-* **5.1.5** For complicated classes, describe the usage of the class with some potential examples as seems appropriate. Remember that markdown syntax is valid in Swift's comment docs. Newlines, lists, etc. are therefore appropriate.
+* **5.1.3** When mentioning code, use code ticks - \`
 
 ```swift
 ///
-/// ## Feature Support
+/// - Parameters:
+///     - colors: A non-empty array of `CGColor` objects that should be in the color space specified by `colorsSpace`.
 ///
-/// This class does some awesome things. It supports:
-///
-/// - Feature 1
-/// - Feature 2
-/// - Feature 3
-///
-/// ## Examples
-///
-/// Here is an example use case indented by four spaces because that indicates a
-/// code block:
-///
-///     let someAwesomeThing = SomeAwesomeClass()
-///     someAwesomeThing.makeSomethingAwesome()
-///
-/// ## Warnings
-///
-/// There are some things you should be careful of:
-///
-/// 1. Thing one
-/// 2. Thing two
-/// 3. Thing three
-///
-final class SomeAwesomeClass {
-
-    /* ... */
-}
 ```
-
-* **5.1.6** When mentioning code, use code ticks - \`
-
-```swift
-///
-/// This does something with a `UIViewController`, perchance.
-/// - warning: Make sure that `someValue` is `true` before running this function.
-///
-func someFunction() {
-
-    /* ... */
-}
-```
-
-* **5.1.7** When writing doc comments, prefer brevity where possible.
 
 ### 5.2 Other Commenting Guidelines
 
