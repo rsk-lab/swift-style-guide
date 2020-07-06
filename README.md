@@ -743,18 +743,18 @@ Guidelines:
 ### 5.2 Other Commenting Guidelines
 
 * **5.2.1** Always leave a space after `//`.
-* **5.2.2** When using `// MARK: - Whatever`, leave a newline after the comment.
+* **5.2.2** When using `// MARK: -`, leave a newline after it.
 
 ```swift
-final class User {
+struct CommunityMember {
 
     // MARK: - Properties
-
-    let name: String
+    
+    let username: String
 
     // MARK: - Lifecycle
 
-    init(name: String) {
+    init(username: String) {
 
         /* ... */
     }
