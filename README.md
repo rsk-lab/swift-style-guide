@@ -193,60 +193,35 @@ class CustomButton: UIButton {
 
 ```swift
 // PREFERRED
-final class NotesViewController: UIViewController {
-
-    // MARK: - Private Bar Button Items
-    
-    private let createNoteBarButtonItem: UIBarButtonItem
-    
-    // MARK: - Private View Controllers
-    
-    // When working with a view controller, table view controller,
-    // collection view controller, split view controller, etc.,
-    // fully indicate the type in the name.
-    private let notesTableViewController: NotesViewNotesTableViewController
-}
+let createNoteBarButtonItem: UIBarButtonItem
 
 // PREFERRED
-final class NotesViewNotesTableViewDataController {
-    
-    // MARK: - Properties
-    
-    // It is ok not to include string in the ivar name here because it's obvious
-    // that it's a string from the property name.
-    var normalizedTitleSearchTerm: String? {
-        
-        /* ... */
-    }
-}
+// It is ok not to include string in the ivar name here because it's obvious
+// that it's a string from the property name.
+var normalizedTitleSearchTerm: String?
 
 // NOT PREFERRED
-final class NotesViewController: UIViewController {
-    
-    // MARK: - Private Bar Button Items
-    
-    // This isn't a `UIButton`, so shouldn't be called button
-    // use `createNoteBarButtonItem` instead.
-    let createNoteButton: UIBarButtonItem
-    
-    // For the sake of consistency, we should put the type name at the end of the
-    // property name and not at the start.
-    private let barButtonItemNotes: UIBarButtonItem
-    
-    // MARK: - Private Views
+// This isn't a `UIButton`, so shouldn't be called button
+// use `createNoteBarButtonItem` instead.
+let createNoteButton: UIBarButtonItem
 
-    // This isn't a `String`, so it should be `startLoggingLabel`.
-    private let startLogging: Label
-    
-    // MARK: - Private View Controllers
-    
-    // This is a table view controller - not a table view.
-    private let notesTableView: NotesViewNotesTableViewController
-    
-    // As mentioned previously, we don't want to use abbreviations, so don't use
-    // `VC` instead of `ViewController`.
-    private let notesTableVC: NotesViewNotesTableVC
-}
+// NOT PREFERRED
+// For the sake of consistency, we should put the type name at the end of the
+// property name and not at the start.
+let barButtonItemNotes: UIBarButtonItem
+
+// NOT PREFERRED
+// This isn't a `String`, so it should be `startLoggingLabel`.
+let startLogging: Label
+
+// NOT PREFERRED
+// This is a table view controller - not a table view.
+let notesTableView: NotesViewNotesTableViewController
+
+// NOT PREFERRED
+// As mentioned previously, we don't want to use abbreviations, so don't use
+// `VC` instead of `ViewController`.
+let notesTableVC: NotesViewNotesTableVC
 ```
 * **2.7** Name your function with words that describe its behavior.
 
