@@ -116,7 +116,7 @@ extension CommunityViewController: UICollectionViewDataSource {
 * **1.9** In general, there should be a space following a comma.
 
 ```swift
-let communityMembersArray = ["Ruslan Skorb", /* ... */]
+let communityMembers = ["Ruslan Skorb", /* ... */]
 ```
 
 * **1.10** There should be a space before and after a binary operator such as `+`, `==`, or `->`. There should also not be a space after a `(` and before a `)`.
