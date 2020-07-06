@@ -182,7 +182,7 @@ class CustomButton: UIButton {
 
     // MARK: - Open Properties
     
-    @IBInspectable open var r: CGFloat {
+    @IBInspectable open var rad: CGFloat {
         
         /* ... */
     }
