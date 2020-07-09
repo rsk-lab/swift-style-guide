@@ -625,9 +625,9 @@ func communityMember(at index: Int) -> CommunityMember? {
 
 ## 4. File Structure
 
-### 4.1 Import Statements
+The following list should be the standard organization of all your Swift files:
 
-Import statements should be at the very top of the code file, and they should be listed in alphabetical order.
+Before the type declaration:
 
 ```swift
 import CoreData.NSManagedObjectID
@@ -635,46 +635,18 @@ import MessageUI.MFMailComposeViewController
 import UIKit
 ```
 
-### 4.2 File Structure
-
-The following list should be the standard organization of all your Swift files, in this specific order:
-
 Inside the type declaration:
 
 ```swift
-// MARK: - <#Accessibility#> Bar Button Items
-
-// MARK: - <#Accessibility#> Views
-
-// MARK: - <#Accessibility#> View Controllers
-
-// MARK: - <#Accessibility#> Superclass Properties
-
 // MARK: - <#Accessibility#> Properties
 
-// MARK: - <#Accessibility#> Static Properties
+// MARK: - Deinitializer
 
-// MARK: - <#Accessibility#> Class Properties
-
-// MARK: - Lifecycle
-
-// MARK: - Handling actions
-
-// MARK: - <#Accessibility#> Superclass Functions
+// MARK: - <#Accessibility#> Initializers
 
 // MARK: - <#Accessibility#> Functions
 
-// MARK: - <#Accessibility#> Static Functions
-
-// MARK: - <#Accessibility#> Class Functions
-
 // MARK: - <#Protocol#>
-```
-
-After the type declaration:
-
-```swift
-<#accessibility#> extension
 ```
 
 Each section above should be organized by accessibility:
@@ -684,14 +656,20 @@ open
 
 public
 
-internal
+internal (by default)
 
 fileprivate
 
 private
 ```
 
-Protocols should be placed in alphabetical order.
+After the type declaration:
+
+```swift
+<#accessibility#> extension
+```
+
+Import statements, properties, initializers and functions inside `// MARK: - `, as well as protocols should be placed in alphabetical order.
 
 ## 5. Documentation/Comments
 
