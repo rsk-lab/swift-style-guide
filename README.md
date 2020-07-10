@@ -255,7 +255,7 @@ protocol Unique {
 // Here, the protocol is a capability, and we name it appropriately.
 protocol Reusable {
     
-    // MARK: - Static Properties
+    // MARK: - Properties
     
     static var reuseIdentifier: String { get }
     
@@ -574,7 +574,7 @@ final class ApplicationDataController {
     
     /* ... */
     
-    // MARK: - Static Properties
+    // MARK: - Properties
     
     static let shared = ApplicationDataController()
     
