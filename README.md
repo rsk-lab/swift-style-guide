@@ -64,7 +64,7 @@ final class SomeClass {
 
 * **1.6** Add one empty line between functions. Give breathing room between code blocks.
 
-* **1.7** Empty declarations should be written in empty braces `{}`. Make it clear that the declaration was meant to be empty and not just a missing `TODO`.
+* **1.7** Empty declarations should be written in empty braces `{}`. Make it clear that the declaration was meant to be empty and not just a missing `// TODO:`.
 
 ```swift
 // PREFERRED
