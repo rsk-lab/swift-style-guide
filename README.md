@@ -340,11 +340,12 @@ let lastName = communityMemberName.lastName
 ```swift
 someFunctionWithEscapingClosure() { [weak self] (error) in
     
-    // you can do this
-    
     self?.doSomething()
-    
-    // or you can do this
+}
+```
+
+```swift
+someFunctionWithEscapingClosure() { [weak self] (error) in
     
     guard let strongSelf = self else {
         
