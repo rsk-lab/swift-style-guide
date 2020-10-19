@@ -23,8 +23,6 @@ This guide was last updated for Swift 5.1 on July 10, 2020.
         - [3.9 Arrays](#39-arrays)
         - [3.10 Using `guard` Statements](#310-using-guard-statements)
     - [4. File Structure](#4-file-structure)
-        - [4.1 Import Statements](#41-import-statements)
-        - [4.2 File Structure](#42-file-structure)
     - [5. Documentation/Comments](#5-documentationcomments)
         - [5.1 Documentation](#51-documentation)
         - [5.2 Other Commenting Guidelines](#52-other-commenting-guidelines)
