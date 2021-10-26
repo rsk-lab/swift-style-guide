@@ -36,26 +36,30 @@ This guide was last updated for Swift 5.1 on July 10, 2020.
 * **1.5** Do not place opening braces on new lines - we use the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup).
 
 ```swift
-final class SomeClass {
+final class SomeObject {
     
     // MARK: - Functions
     
     func someFunction() {
-    
-        if x == y {
         
+        if let x = x {
+            
             /* ... */
         }
-        else if x == z {
-        
+        else if let y = y {
+            
+            /* ... */
+        }
+        else if let z = z {
+            
             /* ... */
         }
         else {
-        
+            
             /* ... */
         }
     }
-
+    
     /* ... */
 }
 ```
@@ -66,13 +70,13 @@ final class SomeClass {
 
 ```swift
 // PREFERRED
-extension InAppNotification: Equatable {}
+extension UIRectCorner: Hashable {}
 
 // NOT PREFERRED
-extension InAppNotification: Equatable { }
+extension UIRectCorner: Hashable { }
 
 // EVEN LESS PREFERRED
-extension InAppNotification: Equatable {
+extension UIRectCorner: Hashable {
 }
 ```
 
@@ -136,10 +140,10 @@ let colorRed = topColorRed + percent * (bottomColorRed - topColorRed)
 let urlSession = URLSession(configuration: .default)
 
 // Prefer using ID to Id.
-let userID = 1
+let appUserID = 1
 
-// Prefer RSKLab to RskLab.
-final public class RSKLab {
+// Prefer RSKLabLLC to RskLabLlc.
+final public class RSKLabLLC {
 
     /* ... */
 }
@@ -167,7 +171,7 @@ class CustomButton: UIButton {
 // PREFERRED
 @IBDesignable open class IBDesignableButton: UIButton {
     
-    // MARK: - Open Properties
+    // MARK: - Open Attributes
     
     @IBInspectable open var cornerRadius: CGFloat {
         
@@ -178,7 +182,7 @@ class CustomButton: UIButton {
 // NOT PREFERRED
 @IBDesignable open class IBDesignBtn: UIButton {
 
-    // MARK: - Open Properties
+    // MARK: - Open Attributes
     
     @IBInspectable open var rad: CGFloat {
         
@@ -194,14 +198,9 @@ class CustomButton: UIButton {
 let createNoteBarButtonItem: UIBarButtonItem
 
 // PREFERRED
-// It is ok not to include string in the ivar name here because it's obvious
-// that it's a string from the property name.
-var normalizedTitleSearchTerm: String?
-
-// NOT PREFERRED
-// This isn't a `UIButton`, so shouldn't be called button
-// use `createNoteBarButtonItem` instead.
-let createNoteButton: UIBarButtonItem
+// It is ok not to include `String` in the name of the property here
+// because it's obvious from the property name that it's a string.
+var searchTerm: String?
 
 // NOT PREFERRED
 // For the sake of consistency, we should put the type name at the end of the
@@ -209,7 +208,12 @@ let createNoteButton: UIBarButtonItem
 let barButtonItemNotes: UIBarButtonItem
 
 // NOT PREFERRED
-// This isn't a `String`, so it should be `startLoggingLabel`.
+// This is not a button, so the name should not end with `Button`,
+// use `createNoteBarButtonItem` instead.
+let createNoteButton: UIBarButtonItem
+
+// NOT PREFERRED
+// This is a label, so it should be `startLoggingLabel`.
 let startLogging: Label
 
 // NOT PREFERRED
@@ -217,8 +221,8 @@ let startLogging: Label
 let notesTableView: NotesViewNotesTableViewController
 
 // NOT PREFERRED
-// As mentioned previously, we don't want to use abbreviations, so don't use
-// `VC` instead of `ViewController`.
+// As mentioned previously, we don't want to use abbreviations,
+// so don't use `VC` instead of `ViewController`.
 let notesTableVC: NotesViewNotesTableVC
 ```
 * **2.7** Name your function with words that describe its behavior.
@@ -321,7 +325,7 @@ for integer in [4, 8, 15, 16, 23, 42] {
 ```swift
 var communityMemberName: (firstName: String, lastName: String) {
     
-    return ("Ruslan", "Skorb")
+    ("Ruslan", "Skorb")
 }
 
 let communityMemberName = self.communityMemberName
@@ -329,27 +333,23 @@ let firstName = communityMemberName.firstName
 let lastName = communityMemberName.lastName
 ```
 
-* **3.1.5** Be wary of retain cycles when creating delegates/protocols for your classes; typically, these properties should be declared `weak`.
+* **3.1.5** Be wary of retain cycles when creating delegates for your classes; typically, these properties should be declared `weak`.
 
 * **3.1.6** All instance properties and functions should be fully-qualified with `self`, including within closures.
 
 * **3.1.7** Be careful when calling `self` directly from an escaping closure as this can cause a retain cycle - use a [capture list](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_163) when this might be the case:
 
 ```swift
-someFunctionWithEscapingClosure() { [weak self] (error) in
+someFunctionWithEscapingClosure { [weak self] in
     
     self?.doSomething()
 }
 ```
 
 ```swift
-someFunctionWithEscapingClosure() { [weak self] (error) in
+someFunctionWithEscapingClosure { [unowned self] in
     
-    guard let strongSelf = self else {
-        
-        return
-    }
-    strongSelf.doSomething()
+    self.doSomething()
 }
 ```
 
@@ -382,28 +382,20 @@ let cancelAlertAction = UIAlertAction(title: cancelAlertActionTitle, style: UIAl
 * **3.1.10** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
 
 ```swift
-if managedObjectContext.hasChanges == true {
+if let appStoreReceiptURL = bundle.appStoreReceiptURL {
     
-    /* ... */
-}
-else {
-    
-    /* ... */
-}
-
-let data: Data?
-do {
-    
-    if let appStoreReceiptURL = bundle.appStoreReceiptURL {
+    let data: Data
+    do {
         
         data = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
     }
-    else {
+    catch {
         
-        data = nil
+        /* ... */
     }
+    /* ... */
 }
-catch {
+else {
     
     /* ... */
 }
@@ -429,15 +421,15 @@ static private let somePrivateInt: Int
 
 ```swift
 // PREFERRED
-open class CommunityMember {
-
+open struct CommunityMember {
+    
     /* ... */
 }
 
 // NOT PREFERRED
 open
-class CommunityMember {
-
+struct CommunityMember {
+    
     /* ... */
 }
 ```
@@ -456,24 +448,9 @@ You can override existing operators to support new types (especially `==`). Howe
 
 * **3.4.2** The `case` statements should line up with the `switch` statement itself as per default Swift standards.
 
-* **3.4.3** When defining a case that has an associated value, make sure that this value is appropriately labeled as opposed to just types (e.g. `case projectInquiries(email: String)` instead of `case projectInquiries(String)`).
+* **3.4.3** Prefer lists of possibilities (e.g. `case 1, 2, 3:`) to using the `fallthrough` keyword where possible.
 
-```swift
-enum ContactOption {
-
-    case generalQuestions(email: String)
-}
-
-switch contactOption {
-
-case let .generalQuestions(email):
-    self.presentMailComposeViewController(email: email)
-}
-```
-
-* **3.4.4** Prefer lists of possibilities (e.g. `case 1, 2, 3:`) to using the `fallthrough` keyword where possible.
-
-* **3.4.5** If you have a default case that shouldn't be reached, preferably throw an error (or handle it in some other similar way such as asserting).
+* **3.4.4** If you have a default case that shouldn't be reached, preferably throw an error (or handle it in some other similar way such as asserting).
 
 ```swift
 switch type {
@@ -491,7 +468,7 @@ case .update:
     /* ... */
     
 @unknown default:
-    fatalError("controller(_:didChange:at:for:newIndexPath:) - unsupported type")
+    fatalError("Unknown `type`")
 }
 ```
 
@@ -517,7 +494,7 @@ if let _ = someOptional {
 
 When implementing protocols, there are three ways to organize your code:
 
-1. Using `// MARK:` comments to separate your protocol implementation from the rest of your code.
+1. Using `// MARK: -` comments to separate your protocol implementation from the rest of your code.
 2. Using an extension outside your `class`/`struct` implementation code, but in the same source file.
 3. Using an extension outside your `class`/`struct` implementation code in another source file.
 
@@ -526,18 +503,13 @@ When implementing protocols, there are three ways to organize your code:
 * **3.7.1** If making a read-only, computed property, provide the getter without the `get {}` around it.
 
 ```swift
-var isHiddenKeyboard: Bool {
-
-    guard let keyboardFrame = self.keyboardFrame else {
-        
-        return true
-    }
-    let isHiddenKeyboard = keyboardFrame.intersects(self.view.frame) == false
-    return isHiddenKeyboard
+override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+    
+    true
 }
 ```
 
-* **3.7.2** When using `get {}`, `set {}`, `willSet`, and `didSet`, indent these blocks.
+* **3.7.2** When using `get`, `set`, `willSet`, and `didSet`, indent these blocks.
 * **3.7.3** Though you can create a custom name for the new or old value for `willSet`/`didSet` and `set`, use the standard `newValue`/`oldValue` identifiers that are provided by default.
 
 ```swift
@@ -553,7 +525,7 @@ private(set) var selectedViewController: UIViewController? {
     }
 }
 
-var noteText: String? {
+@objc dynamic var noteText: String? {
     
     get {
         
@@ -569,13 +541,13 @@ var noteText: String? {
 * **3.7.4** You can declare a singleton property as follows:
 
 ```swift
-final class ApplicationDataController {
+final class SomeObject {
     
     /* ... */
     
-    // MARK: - Properties
+    // MARK: - Attributes
     
-    static let shared = ApplicationDataController()
+    static let shared = SomeObject()
     
     /* ... */
 }
@@ -587,7 +559,7 @@ final class ApplicationDataController {
 
 ```swift
 // Omitting the type.
-doSomethingWithClosure() { (urlResponse) in
+doSomething { result in
     
     /* ... */
 }
@@ -631,13 +603,13 @@ Before the type declaration:
 ```swift
 import CoreData.NSManagedObjectID
 import MessageUI.MFMailComposeViewController
-import UIKit
+import RSKUIKit
 ```
 
 Inside the type declaration:
 
 ```swift
-// MARK: - <#Accessibility#> Properties
+// MARK: - <#Accessibility#> Attributes
 
 // MARK: - Deinitializer
 
@@ -655,7 +627,7 @@ open
 
 public
 
-internal (by default)
+internal (by default, do not need to be specified explicitly)
 
 fileprivate
 
@@ -690,8 +662,11 @@ Guidelines:
 
 ```swift
 ///
+/// Initializes and returns a new object that conforms to `RectProtocol` with the specified `origin` and `size`.
+///
 /// - Parameters:
-///     - colors: A non-empty array of `CGColor` objects that should be in the color space specified by `colorsSpace`.
+///     - origin: The coordinates of the origin of the rectangle.
+///     - size: The size of the rectangle.
 ///
 ```
 
@@ -701,16 +676,18 @@ Guidelines:
 * **5.2.2** When using `// MARK: -`, leave a newline after it.
 
 ```swift
-struct CommunityMember {
-
-    // MARK: - Properties
+class Task {
     
-    let username: String
-
-    // MARK: - Lifecycle
-
-    init(username: String) {
-
+    // MARK: - Attributes
+    
+    let attributesDispatchQueue: DispatchQueue
+    
+    /* ... */
+    
+    // MARK: - Initializers
+    
+    init(targetQueue: DispatchQueue, workDispatchQoS: DispatchQoS) {
+        
         /* ... */
     }
 }
