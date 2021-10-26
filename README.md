@@ -241,37 +241,16 @@ func remove(index: Index) -> Element {
 }
 ```
 
-* **2.8** As per [Apple's API Design Guidelines](https://swift.org/documentation/api-design-guidelines/), a `protocol` should be named as nouns if they describe what something is doing (e.g. `Collection`) and using the suffixes `able`, `ible`, or `ing` if it describes a capability (e.g. `Equatable`, `ProgressReporting`). If neither of those options makes sense for your use case, you can add a `Protocol` suffix to the protocol's name as well. Some example `protocol`s are below.
+* **2.8** Name a `protocol` using the suffix `Protocol`.
 
 ```swift
-// Here, the name is a noun that describes what the protocol does.
-protocol Unique {
-    
-    // MARK: - Properties
-    
-    var uuid: UUID { get }
-    
-    /* ... */
-}
+protocol ObjectProtocol {}
 
-// Here, the protocol is a capability, and we name it appropriately.
-protocol Reusable {
+protocol RectProtocol: ObjectProtocol {
     
-    // MARK: - Properties
+    // MARK: - Attributes
     
-    static var reuseIdentifier: String { get }
-    
-    /* ... */
-}
-
-// Suppose we have an `InputTextView` class, but we also want a protocol
-// to generalize some of the functionality - it might be appropriate to
-// use the `Protocol` suffix here.
-protocol InputTextViewProtocol {
-    
-    // MARK: - Properties
-    
-    var inputText: String { get }
+    var height: CGFloat { get set }
     
     /* ... */
 }
