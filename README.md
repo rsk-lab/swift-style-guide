@@ -650,7 +650,7 @@ All `public` functions/classes/properties/constants/structs/enums/protocols/etc.
 
 After writing a doc comment, you should option click the function/property/class/etc. to make sure that everything is formatted correctly.
 
-Be sure to check out the full set of features available in Swift's comment markup [described in Apple's Documentation](https://developer.apple.com/library/tvos/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html#//apple_ref/doc/uid/TP40016497-CH29-SW1).
+Be sure to check out the full set of features available in Swift's comment markup [described in Apple's Documentation](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1).
 
 Guidelines:
 
