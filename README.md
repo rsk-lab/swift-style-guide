@@ -4,7 +4,7 @@ Make sure to read [Apple's API Design Guidelines](https://swift.org/documentatio
 
 Specifics from these guidelines + additional remarks are mentioned below.
 
-This guide was last updated for Swift 5 on October 26, 2021.
+This guide was last updated for Swift 5 on November 17, 2021.
 
 ## Table Of Contents
 
@@ -171,7 +171,7 @@ class CustomButton: UIButton {
 // PREFERRED
 @IBDesignable open class IBDesignableButton: UIButton {
     
-    // MARK: - Open Attributes
+    // MARK: - Open Properties
     
     @IBInspectable open var cornerRadius: CGFloat {
         
@@ -182,7 +182,7 @@ class CustomButton: UIButton {
 // NOT PREFERRED
 @IBDesignable open class IBDesignBtn: UIButton {
 
-    // MARK: - Open Attributes
+    // MARK: - Open Properties
     
     @IBInspectable open var rad: CGFloat {
         
@@ -248,7 +248,7 @@ protocol ObjectProtocol {}
 
 protocol RectProtocol: ObjectProtocol {
     
-    // MARK: - Attributes
+    // MARK: - Properties
     
     var height: CGFloat { get set }
     
@@ -524,7 +524,7 @@ final class SomeObject {
     
     /* ... */
     
-    // MARK: - Attributes
+    // MARK: - Properties
     
     static let shared = SomeObject()
     
@@ -588,7 +588,7 @@ import RSKUIKit
 Inside the type declaration:
 
 ```swift
-// MARK: - <#Accessibility#> Attributes
+// MARK: - <#Accessibility#> Properties
 
 // MARK: - Deinitializer
 
@@ -657,7 +657,7 @@ Guidelines:
 ```swift
 class Task {
     
-    // MARK: - Attributes
+    // MARK: - Properties
     
     let attributesDispatchQueue: DispatchQueue
     
