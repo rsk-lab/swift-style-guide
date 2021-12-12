@@ -307,16 +307,13 @@ var communityMemberName: (firstName: String, lastName: String) {
     ("Ruslan", "Skorb")
 }
 
-let communityMemberName = self.communityMemberName
 let firstName = communityMemberName.firstName
 let lastName = communityMemberName.lastName
 ```
 
 * **3.1.5** Be wary of retain cycles when creating delegates for your classes; typically, these properties should be declared `weak`.
 
-* **3.1.6** All instance properties and functions should be fully-qualified with `self`, including within closures.
-
-* **3.1.7** Be careful when calling `self` directly from an escaping closure as this can cause a retain cycle - use a [capture list](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_163) when this might be the case:
+* **3.1.6** Be careful when calling `self` directly from an escaping closure as this can cause a retain cycle - use a [capture list](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_163) when this might be the case:
 
 ```swift
 someFunctionWithEscapingClosure { [weak self] in
@@ -326,13 +323,13 @@ someFunctionWithEscapingClosure { [weak self] in
 ```
 
 ```swift
-someFunctionWithEscapingClosure { [unowned self] in
+lazy var storedClosure = { [unowned self] in
     
     self.doSomething()
 }
 ```
 
-* **3.1.8** Don't place parentheses around control flow predicates.
+* **3.1.7** Don't place parentheses around control flow predicates.
 
 ```swift
 // PREFERRED
@@ -348,7 +345,7 @@ if (x == y) {
 }
 ```
 
-* **3.1.9** Avoid writing out an `enum` type where possible - use shorthand.
+* **3.1.8** Avoid writing out an `enum` type where possible - use shorthand.
 
 ```swift
 // PREFERRED
@@ -358,7 +355,7 @@ let cancelAlertAction = UIAlertAction(title: cancelAlertActionTitle, style: .can
 let cancelAlertAction = UIAlertAction(title: cancelAlertActionTitle, style: UIAlertAction.Style.cancel, handler: nil)
 ```
 
-* **3.1.10** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
+* **3.1.9** When using a statement such as `else`, `catch`, etc. that follows a block, put this keyword on a new line. Again, we are following the [Stroustrup style](https://en.m.wikipedia.org/wiki/Indentation_style#Variant:_Stroustrup) here. Example `if`/`else` and `do`/`catch` code is below.
 
 ```swift
 if let appStoreReceiptURL = bundle.appStoreReceiptURL {
@@ -380,9 +377,9 @@ else {
 }
 ```
 
-* **3.1.11** Prefer `static` to `class` when declaring a function or property that is associated with a class as opposed to an instance of that class. Only use `class` if you specifically need the functionality of overriding that function or property in a subclass, though consider using a `protocol` to achieve this instead.
+* **3.1.10** Prefer `static` to `class` when declaring a function or property that is associated with a class as opposed to an instance of that class. Only use `class` if you specifically need the functionality of overriding that function or property in a subclass, though consider using a `protocol` to achieve this instead.
 
-* **3.1.12** If you have a function that takes no arguments, has no side effects, and returns some object or value, prefer using a computed property instead.
+* **3.1.11** If you have a function that takes no arguments, has no side effects, and returns some object or value, prefer using a computed property instead.
 
 ### 3.2 Access Modifiers
 
@@ -508,11 +505,11 @@ private(set) var selectedViewController: UIViewController? {
     
     get {
         
-        self.noteTextController.noteText
+        noteTextController.noteText
     }
     set {
         
-        self.noteTextController.noteText = newValue
+        noteTextController.noteText = newValue
     }
 }
 ```
@@ -564,12 +561,12 @@ doSomething { result in
 // PREFERRED
 func communityMember(at index: Int) -> CommunityMember? {
     
-    guard index >= 0 && index < self.communityMembers.count else {
+    guard index >= 0 && index < communityMembers.count else {
         
         // return early because the index is out of bounds
         return nil
     }
-    return self.communityMembers[index]
+    return communityMembers[index]
 }
 ```
 
